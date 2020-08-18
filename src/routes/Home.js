@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+
 import { actionCreators } from "../store";
 
-function Home({ toDos, addToDo }) {
+import ToDo from "../components/ToDoComponent";
+
+function Home({ toDos, addToDo, deleteToDo }) {
     const [text, setText] = useState("");
 
     function onChange(e) {
@@ -22,8 +25,8 @@ function Home({ toDos, addToDo }) {
                 <button>Add</button>
             </form>
             <ul>
-                {toDos.map((todo, index) => (
-                    <li key={index}>{todo.text}</li>
+                {toDos.map((toDo) => (
+                    <ToDo {...toDo} key={toDo.id} />
                 ))}
             </ul>
         </>
